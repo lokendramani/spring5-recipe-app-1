@@ -1,6 +1,7 @@
 package guru.springframework.domain;
 
 import javax.persistence.*;
+import java.util.Set;
 
 /**
  * Created by jt on 6/13/17.
@@ -21,6 +22,16 @@ public class Recipe {
     private String directions;
     //todo add
     //private Difficulty difficulty;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
+    private Set<Ingredient> igredients;
+
+    public Set<Ingredient> getIgredients() {
+        return igredients;
+    }
+
+    public void setIgredients(Set<Ingredient> igredients) {
+        this.igredients = igredients;
+    }
 
     @Lob
     private Byte[] image;
